@@ -1,5 +1,11 @@
-body {
+/* ====== GLOBAL ====== */
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+body {
   min-height: 100vh;
   font-family: 'Segoe UI', sans-serif;
   background: radial-gradient(circle at top, #1f4037, #0f2027);
@@ -7,41 +13,50 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
 }
 
+/* ====== CONTAINER ====== */
 .container {
   text-align: center;
-  padding: 30px;
-  width: 420px;
+  padding: 20px;
+  width: 100%;
+  max-width: 420px;
   background: rgba(255,255,255,0.05);
   backdrop-filter: blur(15px);
   border-radius: 20px;
-  box-shadow: 0 0 40px rgba(0,255,255,0.2);
+  box-shadow: 0 0 30px rgba(0,255,255,0.2);
 }
 
+/* ====== HEADINGS ====== */
 h1 {
-  margin-bottom: 10px;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
 }
 
 #statusText {
-  font-size: 14px;
+  font-size: 0.9rem;
   opacity: 0.8;
 }
 
+/* ====== CIRCLE SPEED DISPLAY ====== */
 .circle {
   position: relative;
-  width: 220px;
-  height: 220px;
-  margin: 25px auto;
+  width: 70%;
+  max-width: 220px;
+  aspect-ratio: 1 / 1;
+  margin: 20px auto;
 }
 
 svg {
+  width: 100%;
+  height: 100%;
   transform: rotate(-90deg);
 }
 
 circle {
   fill: none;
-  stroke-width: 14;
+  stroke-width: 10;
 }
 
 .bg {
@@ -51,7 +66,7 @@ circle {
 .progress {
   stroke: #00f2fe;
   stroke-linecap: round;
-  filter: drop-shadow(0 0 8px #00f2fe);
+  filter: drop-shadow(0 0 6px #00f2fe);
 }
 
 .speed-text {
@@ -59,38 +74,83 @@ circle {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 45px;
+  font-size: 3rem;
   font-weight: bold;
 }
 
+/* ====== DETAILS & NETWORK INFO ====== */
 .details, .network-info {
-  font-size: 13px;
-  margin: 10px 0;
+  font-size: 0.8rem;
+  margin: 8px 0;
 }
 
+/* ====== BUTTONS ====== */
 button {
-  margin: 8px 5px;
-  padding: 10px 22px;
-  border-radius: 30px;
+  margin: 6px 4px;
+  padding: 8px 18px;
+  border-radius: 25px;
   border: none;
   cursor: pointer;
   font-weight: bold;
+  font-size: 0.85rem;
   background: linear-gradient(45deg, #00f2fe, #4facfe);
   color: black;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 button:hover {
   transform: scale(1.05);
 }
 
+/* ====== HISTORY CHART ====== */
 canvas {
   margin-top: 10px;
+  width: 100%;
+  height: 150px;
   background: rgba(255,255,255,0.05);
   border-radius: 10px;
 }
 
+/* ====== LIGHT MODE ====== */
 .light-mode {
   background: #f4f4f4;
   color: black;
+}
+
+/* ====== MEDIA QUERIES FOR SMALL DEVICES ====== */
+@media (max-width: 480px) {
+  .container {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .speed-text {
+    font-size: 2.2rem;
+  }
+
+  button {
+    padding: 6px 14px;
+    font-size: 0.75rem;
+  }
+
+  .details, .network-info {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .circle {
+    width: 80%;
+  }
+
+  .speed-text {
+    font-size: 2rem;
+  }
+
+  button {
+    padding: 5px 12px;
+  }
 }
