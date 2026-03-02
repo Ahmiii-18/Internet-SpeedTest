@@ -20,30 +20,31 @@ body {
 .container {
   text-align: center;
   padding: 20px;
-  width: 100%;
-  max-width: 420px;
+  width: 95%;
+  max-width: 450px;
   background: rgba(255,255,255,0.05);
   backdrop-filter: blur(15px);
   border-radius: 20px;
-  box-shadow: 0 0 30px rgba(0,255,255,0.2);
+  box-shadow: 0 0 40px rgba(0,255,255,0.2);
 }
 
 /* ====== HEADINGS ====== */
 h1 {
-  font-size: 1.8rem;
-  margin-bottom: 8px;
+  font-size: 6vw; /* scales on mobile */
+  margin-bottom: 10px;
 }
 
 #statusText {
-  font-size: 0.9rem;
+  font-size: 3.5vw;
   opacity: 0.8;
+  margin-bottom: 10px;
 }
 
-/* ====== CIRCLE SPEED DISPLAY ====== */
+/* ====== CIRCLE ====== */
 .circle {
   position: relative;
-  width: 70%;
-  max-width: 220px;
+  width: 80vw;  /* dynamic size for mobile */
+  max-width: 300px;
   aspect-ratio: 1 / 1;
   margin: 20px auto;
 }
@@ -69,30 +70,32 @@ circle {
   filter: drop-shadow(0 0 6px #00f2fe);
 }
 
+/* ====== SPEED TEXT ====== */
 .speed-text {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 3rem;
+  font-size: 12vw;  /* scales automatically */
   font-weight: bold;
+  line-height: 1;
 }
 
 /* ====== DETAILS & NETWORK INFO ====== */
 .details, .network-info {
-  font-size: 0.8rem;
-  margin: 8px 0;
+  font-size: 4.5vw;
+  margin: 6px 0;
 }
 
 /* ====== BUTTONS ====== */
 button {
   margin: 6px 4px;
-  padding: 8px 18px;
-  border-radius: 25px;
+  padding: 2.5vw 5vw;
+  border-radius: 30px;
   border: none;
   cursor: pointer;
   font-weight: bold;
-  font-size: 0.85rem;
+  font-size: 4vw;
   background: linear-gradient(45deg, #00f2fe, #4facfe);
   color: black;
   transition: 0.2s;
@@ -105,8 +108,9 @@ button:hover {
 /* ====== HISTORY CHART ====== */
 canvas {
   margin-top: 10px;
-  width: 100%;
-  height: 150px;
+  width: 90%;
+  height: 30vw; /* scales height */
+  max-height: 150px;
   background: rgba(255,255,255,0.05);
   border-radius: 10px;
 }
@@ -117,40 +121,18 @@ canvas {
   color: black;
 }
 
-/* ====== MEDIA QUERIES FOR SMALL DEVICES ====== */
-@media (max-width: 480px) {
-  .container {
-    padding: 15px;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
-
+/* ====== MEDIA QUERIES FOR VERY SMALL DEVICES ====== */
+@media (max-width: 360px) {
   .speed-text {
-    font-size: 2.2rem;
+    font-size: 14vw;
   }
 
   button {
-    padding: 6px 14px;
-    font-size: 0.75rem;
+    font-size: 4.5vw;
+    padding: 3vw 5vw;
   }
 
   .details, .network-info {
-    font-size: 0.75rem;
-  }
-}
-
-@media (max-width: 360px) {
-  .circle {
-    width: 80%;
-  }
-
-  .speed-text {
-    font-size: 2rem;
-  }
-
-  button {
-    padding: 5px 12px;
+    font-size: 5vw;
   }
 }
