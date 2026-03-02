@@ -1,4 +1,4 @@
-/* ====== GLOBAL ====== */
+/* ===== GLOBAL ===== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -16,35 +16,36 @@ body {
   padding: 10px;
 }
 
-/* ====== CONTAINER ====== */
+/* ===== CONTAINER ===== */
 .container {
   text-align: center;
-  padding: 20px;
   width: 95%;
   max-width: 450px;
+  padding: 25px 20px;
   background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  box-shadow: 0 0 40px rgba(0,255,255,0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 25px;
+  box-shadow: 0 0 50px rgba(0,255,255,0.3);
 }
 
-/* ====== HEADINGS ====== */
+/* ===== HEADINGS ===== */
 h1 {
-  font-size: 6vw; /* scales on mobile */
+  font-size: 6vw;
   margin-bottom: 10px;
+  font-weight: 700;
 }
 
 #statusText {
   font-size: 3.5vw;
   opacity: 0.8;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
-/* ====== CIRCLE ====== */
+/* ===== CIRCLE ===== */
 .circle {
   position: relative;
-  width: 80vw;  /* dynamic size for mobile */
-  max-width: 300px;
+  width: 80vw;
+  max-width: 350px;
   aspect-ratio: 1 / 1;
   margin: 20px auto;
 }
@@ -57,7 +58,7 @@ svg {
 
 circle {
   fill: none;
-  stroke-width: 10;
+  stroke-width: 12;
 }
 
 .bg {
@@ -67,72 +68,99 @@ circle {
 .progress {
   stroke: #00f2fe;
   stroke-linecap: round;
-  filter: drop-shadow(0 0 6px #00f2fe);
+  filter: drop-shadow(0 0 8px #00f2fe);
+  transition: stroke-dashoffset 0.3s linear;
 }
 
-/* ====== SPEED TEXT ====== */
+/* ===== SPEED TEXT ===== */
 .speed-text {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 12vw;  /* scales automatically */
-  font-weight: bold;
+  font-size: 12vw;
+  font-weight: 900;
   line-height: 1;
 }
 
-/* ====== DETAILS & NETWORK INFO ====== */
+/* ===== DETAILS & NETWORK INFO ===== */
 .details, .network-info {
-  font-size: 4.5vw;
-  margin: 6px 0;
+  font-size: 4vw;
+  margin: 8px 0;
 }
 
-/* ====== BUTTONS ====== */
+/* ===== BUTTONS ===== */
 button {
-  margin: 6px 4px;
-  padding: 2.5vw 5vw;
-  border-radius: 30px;
+  margin: 8px 5px;
+  padding: 3vw 8vw;
+  border-radius: 50px;
   border: none;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 4vw;
   background: linear-gradient(45deg, #00f2fe, #4facfe);
   color: black;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
 button:hover {
   transform: scale(1.05);
 }
 
-/* ====== HISTORY CHART ====== */
+/* ===== HISTORY CHART ===== */
 canvas {
-  margin-top: 10px;
+  margin-top: 20px;
   width: 90%;
-  height: 30vw; /* scales height */
-  max-height: 150px;
+  height: 30vw;
+  max-height: 180px;
   background: rgba(255,255,255,0.05);
-  border-radius: 10px;
+  border-radius: 15px;
 }
 
-/* ====== LIGHT MODE ====== */
+/* ===== LIGHT MODE ===== */
 .light-mode {
   background: #f4f4f4;
   color: black;
 }
 
-/* ====== MEDIA QUERIES FOR VERY SMALL DEVICES ====== */
+/* ===== MEDIA QUERIES ===== */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+  #statusText {
+    font-size: 1.2rem;
+  }
+  .speed-text {
+    font-size: 5rem;
+  }
+  .details, .network-info {
+    font-size: 1rem;
+  }
+  button {
+    font-size: 1rem;
+    padding: 0.8rem 2rem;
+  }
+  canvas {
+    height: 150px;
+  }
+}
+
 @media (max-width: 360px) {
   .speed-text {
-    font-size: 14vw;
+    font-size: 16vw;
   }
-
-  button {
-    font-size: 4.5vw;
-    padding: 3vw 5vw;
+  h1 {
+    font-size: 10vw;
   }
-
+  #statusText {
+    font-size: 5vw;
+  }
   .details, .network-info {
     font-size: 5vw;
+  }
+  button {
+    font-size: 5vw;
+    padding: 4vw 10vw;
   }
 }
