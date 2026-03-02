@@ -8,14 +8,16 @@
 <body>
 
 <div class="container">
+
   <h1>Internet Speed Test</h1>
   <p id="statusText">Ready</p>
 
   <div class="circle">
-    <svg width="220" height="220">
+    <svg>
       <circle cx="110" cy="110" r="100" class="bg"></circle>
       <circle cx="110" cy="110" r="100" class="progress" id="progressCircle"></circle>
     </svg>
+
     <div class="speed-text">
       <span id="speed">0</span>
       <small>Mbps</small>
@@ -35,11 +37,14 @@
     <p>ISP: <span id="isp">--</span></p>
   </div>
 
-  <button id="startBtn">Start Test</button>
-  <button id="themeBtn">Toggle Theme</button>
+  <div class="buttons">
+    <button id="startBtn">Start Test</button>
+    <button id="themeBtn">Toggle Theme</button>
+  </div>
 
   <h3>Last 5 Results</h3>
-  <canvas id="historyChart" width="320" height="150"></canvas>
+  <canvas id="historyChart"></canvas>
+
 </div>
 
 <script src="script.js"></script>
