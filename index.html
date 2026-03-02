@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ultimate Speed Test</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <h1>Internet Speed Test</h1>
+  <p id="statusText">Ready</p>
+
+  <div class="circle">
+    <svg width="220" height="220">
+      <circle cx="110" cy="110" r="100" class="bg"></circle>
+      <circle cx="110" cy="110" r="100" class="progress" id="progressCircle"></circle>
+    </svg>
+
+    <div class="speed-text">
+      <span id="speed">0</span>
+      <small>Mbps</small>
+    </div>
+  </div>
+
+  <div class="details">
+    <p>Ping: <span id="ping">--</span> ms</p>
+    <p>Download: <span id="download">--</span> Mbps</p>
+    <p>Upload: <span id="upload">--</span> Mbps</p>
+  </div>
+
+  <div class="network-info">
+    <p>IP: <span id="ip">--</span></p>
+    <p>City: <span id="city">--</span></p>
+    <p>Country: <span id="country">--</span></p>
+    <p>ISP: <span id="isp">--</span></p>
+  </div>
+
+  <button id="startBtn">Start Test</button>
+  <button id="themeBtn">Toggle Theme</button>
+
+  <h3>Last 5 Results</h3>
+  <canvas id="historyChart" width="320" height="150"></canvas>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #1f4037, #0f2027);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  text-align: center;
+  padding: 30px;
+  width: 420px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(0,255,255,0.2);
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+#statusText {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.circle {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 25px auto;
+}
+
+svg {
+  transform: rotate(-90deg);
+}
+
+circle {
+  fill: none;
+  stroke-width: 14;
+}
+
+.bg {
+  stroke: rgba(255,255,255,0.15);
+}
+
+.progress {
+  stroke: #00f2fe;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 8px #00f2fe);
+}
+
+.speed-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 45px;
+  font-weight: bold;
+}
+
+.details, .network-info {
+  font-size: 13px;
+  margin: 10px 0;
+}
+
+button {
+  margin: 8px 5px;
+  padding: 10px 22px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: linear-gradient(45deg, #00f2fe, #4facfe);
+  color: black;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+canvas {
+  margin-top: 10px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+}
+
+.light-mode {
+  background: #f4f4f4;
+  color: black;
+}
