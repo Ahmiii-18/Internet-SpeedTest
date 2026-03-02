@@ -26,13 +26,16 @@ body {
   backdrop-filter: blur(20px);
   border-radius: 25px;
   box-shadow: 0 0 50px rgba(0,255,255,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* ===== HEADINGS ===== */
 h1 {
   font-size: 6vw;
-  margin-bottom: 10px;
   font-weight: 700;
+  margin-bottom: 10px;
 }
 
 #statusText {
@@ -47,7 +50,7 @@ h1 {
   width: 80vw;
   max-width: 350px;
   aspect-ratio: 1 / 1;
-  margin: 20px auto;
+  margin: 20px 0;
 }
 
 svg {
@@ -81,17 +84,30 @@ circle {
   font-size: 12vw;
   font-weight: 900;
   line-height: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
 }
 
 /* ===== DETAILS & NETWORK INFO ===== */
 .details, .network-info {
   font-size: 4vw;
-  margin: 8px 0;
+  margin: 6px 0;
+  width: 100%;
+  text-align: left;
+  padding-left: 10px;
 }
 
 /* ===== BUTTONS ===== */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+
 button {
-  margin: 8px 5px;
   padding: 3vw 8vw;
   border-radius: 50px;
   border: none;
@@ -125,42 +141,18 @@ canvas {
 
 /* ===== MEDIA QUERIES ===== */
 @media (min-width: 768px) {
-  h1 {
-    font-size: 3rem;
-  }
-  #statusText {
-    font-size: 1.2rem;
-  }
-  .speed-text {
-    font-size: 5rem;
-  }
-  .details, .network-info {
-    font-size: 1rem;
-  }
-  button {
-    font-size: 1rem;
-    padding: 0.8rem 2rem;
-  }
-  canvas {
-    height: 150px;
-  }
+  h1 { font-size: 3rem; }
+  #statusText { font-size: 1.2rem; }
+  .speed-text { font-size: 5rem; }
+  .details, .network-info { font-size: 1rem; }
+  button { font-size: 1rem; padding: 0.8rem 2rem; }
+  canvas { height: 150px; }
 }
 
 @media (max-width: 360px) {
-  .speed-text {
-    font-size: 16vw;
-  }
-  h1 {
-    font-size: 10vw;
-  }
-  #statusText {
-    font-size: 5vw;
-  }
-  .details, .network-info {
-    font-size: 5vw;
-  }
-  button {
-    font-size: 5vw;
-    padding: 4vw 10vw;
-  }
+  h1 { font-size: 10vw; }
+  #statusText { font-size: 5vw; }
+  .speed-text { font-size: 16vw; }
+  .details, .network-info { font-size: 5vw; }
+  button { font-size: 5vw; padding: 4vw 10vw; }
 }
