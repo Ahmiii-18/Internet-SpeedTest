@@ -7,7 +7,7 @@
 body {
   min-height: 100vh;
   font-family: 'Segoe UI', sans-serif;
-  background: radial-gradient(circle at top, #1f4037, #0f2027);
+  background: #0a1a2f;
   color: white;
   display: flex;
   justify-content: center;
@@ -15,19 +15,17 @@ body {
   padding: 20px;
 }
 
-/* ===== CONTAINER ===== */
 .container {
   width: 95%;
   max-width: 420px;
   padding: 30px 25px;
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(20px);
+  background: rgba(20,30,50,0.4);
+  backdrop-filter: blur(15px);
   border-radius: 25px;
-  box-shadow: 0 0 40px rgba(0,255,255,0.25);
+  box-shadow: 0 0 40px rgba(0,80,180,0.2);
   text-align: center;
 }
 
-/* ===== HEADINGS ===== */
 h1 {
   font-size: clamp(24px, 6vw, 36px);
   margin-bottom: 6px;
@@ -47,93 +45,7 @@ h1 {
   margin: 0 auto 25px auto;
 }
 
-svg {
-  width: 100%;
-  transform: rotate(-90deg);
-}
-
-circle {
-  fill: none;
-  stroke-width: 10;
-}
-
-.bg {
-  stroke: rgba(255,255,255,0.15);
-}
-
-.progress {
-  stroke: #0066cc; /* subtle dark blue */
-  stroke-linecap: round;
-  filter: drop-shadow(0 0 6px #003366);
-  transition: stroke-dashoffset 0.2s linear;
-}
-
-/* ===== SPEED TEXT ===== */
-.speed-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: clamp(30px, 9vw, 70px);
-  font-weight: 900;
-  display: flex;
-  align-items: baseline;
-  gap: 4px;
-}
-
-.speed-text small {
-  font-size: 14px;
-  font-weight: 500;
-}
-
-/* ===== DETAILS ===== */
-.details,
-.network-info {
-  font-size: clamp(14px, 4vw, 16px);
-  margin: 12px 0;
-  text-align: left;
-}
-
-/* ===== BUTTONS ===== */
-.buttons {
-  margin: 20px 0;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-button {
-  padding: 10px 22px;
-  border-radius: 50px;
-  border: none;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 14px;
-  background: linear-gradient(45deg, #00f2fe, #4facfe);
-  color: black;
-  transition: 0.3s;
-}
-
-button:hover {
-  transform: scale(1.05);
-}
-
-/* ===== GRAPH ===== */
-canvas {
-  margin-top: 15px;
-  width: 100%;
-  height: 140px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 15px;
-}
-
-/* ===== LIGHT MODE ===== */
-.light-mode {
-  background: #f4f4f4;
-  color: black;
-}
-/* ===== SUBTLE DARK-BLUE RING ===== */
+/* ===== Animated Ring ===== */
 .ring {
   position: absolute;
   inset: -12px;
@@ -159,6 +71,7 @@ canvas {
   to { transform: rotate(360deg); }
 }
 
+/* ===== SVG CIRCLE ===== */
 svg {
   position: relative;
   z-index: 2;
@@ -166,12 +79,84 @@ svg {
   transform: rotate(-90deg);
 }
 
+circle {
+  fill: none;
+  stroke-width: 10;
+}
+
+.bg {
+  stroke: rgba(255,255,255,0.1);
+}
+
+.progress {
+  stroke: #0066cc;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 6px #003366);
+  transition: stroke-dashoffset 0.2s linear;
+}
+
+/* ===== SPEED TEXT ===== */
 .speed-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(32px, 9vw, 70px);
+  font-weight: 900;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
   z-index: 3;
 }
 
-/* Pulse effect while testing */
-.testing .ring {
-  animation: rotateRing 1s linear infinite;
-  opacity: 1;
+.speed-text small {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ===== DETAILS ===== */
+.details, .network-info {
+  font-size: clamp(14px, 4vw, 16px);
+  margin: 12px 0;
+  text-align: left;
+}
+
+/* ===== BUTTONS ===== */
+.buttons {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 10px 22px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  background: linear-gradient(45deg, #003366, #004080);
+  color: white;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* ===== GRAPH ===== */
+canvas {
+  margin-top: 15px;
+  width: 100%;
+  height: 140px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
+}
+
+/* ===== LIGHT MODE ===== */
+.light-mode {
+  background: #f4f4f4;
+  color: black;
 }
