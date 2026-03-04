@@ -1,5 +1,3 @@
-/* ========= SELECT ELEMENTS ========= */
-
 const startBtn = document.getElementById("startBtn");
 const themeBtn = document.getElementById("themeBtn");
 
@@ -13,9 +11,8 @@ const progressCircle = document.getElementById("progressCircle");
 const canvas = document.getElementById("historyChart");
 const ctx = canvas.getContext("2d");
 
-/* ========= CIRCLE SETUP ========= */
-
-const radius = 100;
+/* ===== FIXED RADIUS ===== */
+const radius = 90;
 const circumference = 2 * Math.PI * radius;
 
 progressCircle.style.strokeDasharray = circumference;
@@ -26,8 +23,6 @@ function setProgress(percent) {
   progressCircle.style.strokeDashoffset = offset;
 }
 
-/* ========= RESET UI ========= */
-
 function resetUI() {
   speedDisplay.innerText = "0";
   pingDisplay.innerText = "--";
@@ -37,10 +32,7 @@ function resetUI() {
   setProgress(0);
 }
 
-/* ========= REAL DOWNLOAD TEST ========= */
-
 async function runSpeedTest() {
-
   startBtn.disabled = true;
   resetUI();
   statusText.innerText = "Downloading test file...";
@@ -48,35 +40,31 @@ async function runSpeedTest() {
   const testFile =
     "https://upload.wikimedia.org/wikipedia/commons/3/3f/Fronalpstock_big.jpg";
 
-  const fileSizeBytes = 5245329; // ~5MB
+  const fileSizeBytes = 5245329;
   const startTime = performance.now();
 
   try {
-    await fetch(testFile + "?cacheBust=" + Math.random());
+    await fetch(testFile + "?cache=" + Math.random());
     const endTime = performance.now();
 
     const duration = (endTime - startTime) / 1000;
     const bitsLoaded = fileSizeBytes * 8;
     const speedMbps =
-      (bitsLoaded / duration / 1024 / 1024).toFixed(2);
+      bitsLoaded / duration / 1024 / 1024;
 
-    animateSpeed(parseFloat(speedMbps));
+    animateSpeed(speedMbps);
 
-  } catch (error) {
+  } catch {
     statusText.innerText = "Test Failed ❌";
     startBtn.disabled = false;
   }
 }
 
-/* ========= ANIMATION ========= */
-
 function animateSpeed(maxSpeed) {
-
   statusText.innerText = "Calculating speed...";
   let current = 0;
 
   const interval = setInterval(() => {
-
     current += maxSpeed / 60;
 
     if (current >= maxSpeed) {
@@ -91,15 +79,12 @@ function animateSpeed(maxSpeed) {
   }, 30);
 }
 
-/* ========= FINISH ========= */
-
 function finishTest(downloadSpeed) {
-
-  const uploadSpeed = (downloadSpeed * 0.4).toFixed(2);
+  const uploadSpeed = downloadSpeed * 0.4;
   const pingValue = Math.floor(Math.random() * 30 + 5);
 
   downloadDisplay.innerText = downloadSpeed.toFixed(2);
-  uploadDisplay.innerText = uploadSpeed;
+  uploadDisplay.innerText = uploadSpeed.toFixed(2);
   pingDisplay.innerText = pingValue;
 
   saveResult(downloadSpeed);
@@ -108,15 +93,12 @@ function finishTest(downloadSpeed) {
   startBtn.disabled = false;
 }
 
-/* ========= HISTORY ========= */
-
+/* ===== FIXED RESPONSIVE GRAPH ===== */
 function saveResult(speed) {
-
   let history =
     JSON.parse(localStorage.getItem("speedHistory")) || [];
 
   history.push(parseFloat(speed));
-
   if (history.length > 5) history.shift();
 
   localStorage.setItem("speedHistory",
@@ -126,15 +108,20 @@ function saveResult(speed) {
 }
 
 function drawGraph(data) {
-
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   if (data.length === 0) return;
 
+  const maxValue = Math.max(...data);
+  const stepX = canvas.width / (data.length - 1);
+
   ctx.beginPath();
-  ctx.moveTo(0, canvas.height - data[0]);
 
   data.forEach((value, index) => {
-    ctx.lineTo(index * 60, canvas.height - value);
+    const x = index * stepX;
+    const y = canvas.height - (value / maxValue) * canvas.height;
+
+    if (index === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
   });
 
   ctx.strokeStyle = "#00f2fe";
@@ -144,10 +131,7 @@ function drawGraph(data) {
 
 drawGraph(JSON.parse(localStorage.getItem("speedHistory")) || []);
 
-/* ========= ISP INFO ========= */
-
 async function fetchNetworkInfo() {
-
   try {
     const response = await fetch("https://ipapi.co/json/");
     const data = await response.json();
@@ -164,22 +148,8 @@ async function fetchNetworkInfo() {
 
 fetchNetworkInfo();
 
-/* ========= THEME ========= */
-
 themeBtn.addEventListener("click", () => {
-
   document.body.classList.toggle("light-mode");
-
-  localStorage.setItem(
-    "themeMode",
-    document.body.classList.contains("light-mode")
-  );
 });
-
-if (localStorage.getItem("themeMode") === "true") {
-  document.body.classList.add("light-mode");
-}
-
-/* ========= START BUTTON ========= */
 
 startBtn.addEventListener("click", runSpeedTest);
