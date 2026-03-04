@@ -14,16 +14,18 @@
   <p id="statusText">Ready</p>
 
   <div class="circle">
-    <svg viewBox="0 0 200 200">
-      <circle cx="100" cy="100" r="85" class="bg"></circle>
-      <circle cx="100" cy="100" r="85" class="progress" id="progressCircle"></circle>
-    </svg>
+  <div class="ring"></div>
 
-    <div class="speed-text">
-      <span id="speed">0</span>
-      <small>Mbps</small>
-    </div>
+  <svg viewBox="0 0 200 200">
+    <circle cx="100" cy="100" r="85" class="bg"></circle>
+    <circle cx="100" cy="100" r="85" class="progress" id="progressCircle"></circle>
+  </svg>
+
+  <div class="speed-text">
+    <span id="speed">0</span>
+    <small>Mbps</small>
   </div>
+</div>
 
   <div class="details">
     <p>Ping: <span id="ping">--</span> ms</p>
