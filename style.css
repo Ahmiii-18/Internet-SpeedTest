@@ -1,4 +1,3 @@
-/* ===== GLOBAL ===== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -13,55 +12,49 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 20px;
 }
 
 /* ===== CONTAINER ===== */
 .container {
-  text-align: center;
   width: 95%;
-  max-width: 450px;
-  padding: 25px 20px;
-  background: rgba(255,255,255,0.05);
+  max-width: 420px;
+  padding: 30px 25px;
+  background: rgba(255,255,255,0.06);
   backdrop-filter: blur(20px);
   border-radius: 25px;
-  box-shadow: 0 0 50px rgba(0,255,255,0.3);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  box-shadow: 0 0 40px rgba(0,255,255,0.25);
+  text-align: center;
 }
 
 /* ===== HEADINGS ===== */
 h1 {
-  font-size: 6vw;
-  font-weight: 700;
-  margin-bottom: 10px;
+  font-size: clamp(24px, 6vw, 36px);
+  margin-bottom: 6px;
 }
 
 #statusText {
-  font-size: 3.5vw;
+  font-size: clamp(14px, 4vw, 18px);
   opacity: 0.8;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 /* ===== CIRCLE ===== */
 .circle {
   position: relative;
-  width: 80vw;
-  max-width: 350px;
-  aspect-ratio: 1 / 1;
-  margin: 20px 0;
+  width: 65%;
+  max-width: 230px;
+  margin: 0 auto 25px auto;
 }
 
 svg {
   width: 100%;
-  height: 100%;
   transform: rotate(-90deg);
 }
 
 circle {
   fill: none;
-  stroke-width: 12;
+  stroke-width: 10;
 }
 
 .bg {
@@ -71,8 +64,8 @@ circle {
 .progress {
   stroke: #00f2fe;
   stroke-linecap: round;
-  filter: drop-shadow(0 0 8px #00f2fe);
-  transition: stroke-dashoffset 0.3s linear;
+  filter: drop-shadow(0 0 6px #00f2fe);
+  transition: stroke-dashoffset 0.2s linear;
 }
 
 /* ===== SPEED TEXT ===== */
@@ -81,39 +74,42 @@ circle {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 12vw;
+  font-size: clamp(30px, 9vw, 70px);
   font-weight: 900;
-  line-height: 1;
   display: flex;
   align-items: baseline;
-  gap: 3px;
+  gap: 4px;
 }
 
-/* ===== DETAILS & NETWORK INFO ===== */
-.details, .network-info {
-  font-size: 4vw;
-  margin: 6px 0;
-  width: 100%;
+.speed-text small {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ===== DETAILS ===== */
+.details,
+.network-info {
+  font-size: clamp(14px, 4vw, 16px);
+  margin: 12px 0;
   text-align: left;
-  padding-left: 10px;
 }
 
 /* ===== BUTTONS ===== */
 .buttons {
+  margin: 20px 0;
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 12px;
   flex-wrap: wrap;
-  margin: 15px 0;
 }
 
 button {
-  padding: 3vw 8vw;
+  padding: 10px 22px;
   border-radius: 50px;
   border: none;
   cursor: pointer;
   font-weight: 700;
-  font-size: 4vw;
+  font-size: 14px;
   background: linear-gradient(45deg, #00f2fe, #4facfe);
   color: black;
   transition: 0.3s;
@@ -123,12 +119,11 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* ===== HISTORY CHART ===== */
+/* ===== GRAPH ===== */
 canvas {
-  margin-top: 20px;
-  width: 90%;
-  height: 30vw;
-  max-height: 180px;
+  margin-top: 15px;
+  width: 100%;
+  height: 140px;
   background: rgba(255,255,255,0.05);
   border-radius: 15px;
 }
@@ -137,22 +132,4 @@ canvas {
 .light-mode {
   background: #f4f4f4;
   color: black;
-}
-
-/* ===== MEDIA QUERIES ===== */
-@media (min-width: 768px) {
-  h1 { font-size: 3rem; }
-  #statusText { font-size: 1.2rem; }
-  .speed-text { font-size: 5rem; }
-  .details, .network-info { font-size: 1rem; }
-  button { font-size: 1rem; padding: 0.8rem 2rem; }
-  canvas { height: 150px; }
-}
-
-@media (max-width: 360px) {
-  h1 { font-size: 10vw; }
-  #statusText { font-size: 5vw; }
-  .speed-text { font-size: 16vw; }
-  .details, .network-info { font-size: 5vw; }
-  button { font-size: 5vw; padding: 4vw 10vw; }
 }
