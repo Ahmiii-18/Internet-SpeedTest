@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ultimate Speed Test</title>
+  <title>Ultimate Speed Test Pro</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,18 +14,19 @@
   <p id="statusText">Ready</p>
 
   <div class="circle">
-  <div class="ring"></div>
+    <!-- Subtle dark-blue animated ring -->
+    <div class="ring"></div>
 
-  <svg viewBox="0 0 200 200">
-    <circle cx="100" cy="100" r="85" class="bg"></circle>
-    <circle cx="100" cy="100" r="85" class="progress" id="progressCircle"></circle>
-  </svg>
+    <svg viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="85" class="bg"></circle>
+      <circle cx="100" cy="100" r="85" class="progress" id="progressCircle"></circle>
+    </svg>
 
-  <div class="speed-text">
-    <span id="speed">0</span>
-    <small>Mbps</small>
+    <div class="speed-text">
+      <span id="speed">0</span>
+      <small>Mbps</small>
+    </div>
   </div>
-</div>
 
   <div class="details">
     <p>Ping: <span id="ping">--</span> ms</p>
