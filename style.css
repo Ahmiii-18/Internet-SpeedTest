@@ -62,9 +62,9 @@ circle {
 }
 
 .progress {
-  stroke: #00f2fe;
+  stroke: #0066cc; /* subtle dark blue */
   stroke-linecap: round;
-  filter: drop-shadow(0 0 6px #00f2fe);
+  filter: drop-shadow(0 0 6px #003366);
   transition: stroke-dashoffset 0.2s linear;
 }
 
@@ -132,4 +132,46 @@ canvas {
 .light-mode {
   background: #f4f4f4;
   color: black;
+}
+/* ===== SUBTLE DARK-BLUE RING ===== */
+.ring {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #003366,
+    #004080,
+    #003366
+  );
+  filter: blur(12px);
+  opacity: 0.4;
+  animation: rotateRing 4s linear infinite;
+  z-index: 0;
+}
+
+.testing .ring {
+  animation: rotateRing 2s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes rotateRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+svg {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  transform: rotate(-90deg);
+}
+
+.speed-text {
+  z-index: 3;
+}
+
+/* Pulse effect while testing */
+.testing .ring {
+  animation: rotateRing 1s linear infinite;
+  opacity: 1;
 }
